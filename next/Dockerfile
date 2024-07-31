@@ -1,15 +1,14 @@
 FROM node:20-alpine
 
-ENV TZ Asia/Tokyo
-
 WORKDIR /usr/src/app
 
-COPY ./ ./
+COPY package*.json ./
 
-RUN apk update && apk add bash
+RUN apk update && apk add bash && npm install
 
-RUN npm install
+COPY . .
 
 EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
+

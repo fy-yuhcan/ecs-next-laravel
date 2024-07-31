@@ -1,0 +1,16 @@
+version: '3'
+services:
+  next:
+    build: .
+    user: root
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    networks:
+      - laravel_sail
+networks:
+  laravel_sail:
+    external: true
+
